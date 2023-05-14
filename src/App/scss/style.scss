@@ -1,0 +1,34 @@
+@import "./mixins";
+@import "./vars";
+
+@import "../styles/reset.css";
+@import "../styles/fonts.css";
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Gilroy";
+}
+.container {
+    max-width: 959px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+body {
+    background: #f3f8f5;
+}
+
+@include mq(tablet-wide, max) {
+    .container {
+        max-width: 712px;
+    }
+}
+
+@include mq(tablet, max) {
+    .container {
+        max-width: 512px;
+    }
+}

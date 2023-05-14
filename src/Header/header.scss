@@ -1,0 +1,58 @@
+@import "../App/scss/mixins";
+
+.header {
+    background: #ffffff;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__logo {
+        &-wrapper {
+            padding: 10px 40px 10px 0;
+            border-right: 3px solid #f0f0f0;
+        }
+        img {
+            width: 195px;
+        }
+    }
+    &__lang-selector {
+        height: 80px;
+        padding: 0 12px 0 24px;
+        font-weight: 600;
+
+        display: flex;
+        align-items: center;
+    }
+}
+@include mq(tablet-wide, max) {
+    .header {
+        padding: 16px 0;
+        margin-bottom: 27px;
+        &__wrapper {
+            justify-content: space-between;
+        }
+        &__logo {
+            &-wrapper {
+                border: 0;
+                padding: 0;
+            }
+            img {
+                width: 140px;
+            }
+        }
+        &__lang-selector {
+            height: auto;
+            padding: 0;
+        }
+    }
+}
+
+@include mq("960", max) {
+}
