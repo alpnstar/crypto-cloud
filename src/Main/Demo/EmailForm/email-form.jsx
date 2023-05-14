@@ -18,9 +18,16 @@ export default function EmailForm(props) {
                         </div>
                     </label>
                 </div>
-                Отправить уведомление <span className="demo__notification-text--hidden">на почту</span>
+                <label htmlFor="slider-input">
+                    Отправить уведомление <span className="demo__notification-text--hidden">на почту</span>
+                </label>
             </div>
-            {props.get && <input type="text" />}
+            {props.get &&
+                <form className='demo__notification-form'>
+                    <legend>E-mail</legend>
+                    <input type='email' placeholder='longemail1476@domail.com' />
+                </form>
+            }
         </div>
     )
 }

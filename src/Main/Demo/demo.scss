@@ -72,15 +72,36 @@
     &__notification {
         background-color: #ffffff;
         border-radius: 12px;
-        font-size: 18px;
         padding: 24px;
         &-text {
             display: flex;
+            font-size: em(18);
+
             align-items: center;
             column-gap: 8px;
         }
-        input {
-            border: 1px black solid;
+        &-form {
+            * {
+                font-weight: 300;
+            }
+            margin-top: 25px;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            legend {
+                display: block;
+                padding: 15px;
+                border-right: 1px solid #f0f0f0;
+                white-space: nowrap;
+            }
+            input {
+                padding-left: 15px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &::placeholder {
+                    font-size: em(14);
+                }
+            }
         }
     }
     .slider {
@@ -114,7 +135,7 @@
         bottom: 0;
         background: #bfbcdd;
         border-radius: 34px;
-        transition: transform background 0.4s .2s ease;
+        transition: transform background 0.4s 0.2s ease;
     }
 
     .slider__thumb {
@@ -135,7 +156,6 @@
     .slider--on .slider__thumb {
         transform: translateX(16px);
         border-color: #4a40c6;
-
     }
 
     &__block-2 {
@@ -239,7 +259,7 @@
             font-size: 13px;
         }
         &__notification {
-            font-size: inherit;
+            font-size: 14.23px;
             &-text--hidden {
                 display: none;
             }
