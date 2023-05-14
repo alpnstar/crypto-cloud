@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://alpnstar.github.io/crypto-cloud",
   "scripts": {
     "start": "webpack serve --node-env=development",
     "build-dev": "webpack",
     "build-prod": "webpack --node-env=production",
-    "clear": "rm -dr bundle"
+    "clear": "rm -dr bundle",
+    "deploy": "gh-pages -d bundle"
   },
   "keywords": [],
   "author": "Satiyadzhiev",
@@ -20,6 +22,7 @@
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "gh-pages": "^5.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.1",
     "image-webpack-loader": "^8.1.0",

@@ -1,7 +1,12 @@
 import './demo.scss';
-import React from 'react';
-
+import React, { useState } from 'react';
+import EmailForm from './EmailForm/email-form.jsx'
 export default function Demo(props) {
+    const [emailFormDisabled, setEmailFormDisabled] = useState(false);
+
+    const handleInputChange = () => {
+        setEmailFormDisabled(!emailFormDisabled);
+    };
     return (
         <div className="demo">
             <div className="demo__wrapper container">
@@ -22,11 +27,7 @@ export default function Demo(props) {
                         </div>
 
                     </div>
-                    <div className="demo__notification">
-                        <span className='demo__notification-text'>
-                            Отправить уведомление <span className="demo__notification-text--hidden">на почту</span>
-                        </span>
-                    </div>
+                    <EmailForm get={emailFormDisabled} set={handleInputChange} />
                 </div>
                 <div className="demo__block-2">
                     <div className="demo__inv-time">
@@ -48,7 +49,7 @@ export default function Demo(props) {
                             <span className='demo__details-commission'></span>
                             <span className='demo__details-full-total'></span>
                             <div className="demo__details-button-wrapper">
-                                <button className="demo__details-button">Оплатить</button>
+                                <button disabled={emailFormDisabled} className="demo__details-button">Оплатить</button>
                             </div>
                             <span className="demo__details-note">Нажимая «Оплатить», вы принимаете пользовательское соглашение.</span>
                         </div>
