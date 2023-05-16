@@ -12,6 +12,7 @@ export default function Header(props) {
                 </div>
                 <div className="header__lang-selector">
                     <span>
+                        
                         RU
                     </span>
                 </div>

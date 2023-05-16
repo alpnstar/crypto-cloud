@@ -3,10 +3,16 @@ import React, { useState } from 'react';
 import EmailForm from './EmailForm/email-form.jsx'
 export default function Demo(props) {
     const [emailFormDisabled, setEmailFormDisabled] = useState(false);
-
-    const handleInputChange = () => {
+    const handleSetEmailFormDisabled = () => {
+        if (emailFormDisabled == false) {
+            setButtonState(true);
+        } else {
+            setButtonState(false);
+        }
         setEmailFormDisabled(!emailFormDisabled);
+
     };
+    const [buttonState, setButtonState] = useState(false);
     return (
         <div className="demo">
             <div className="demo__wrapper container">
@@ -25,9 +31,8 @@ export default function Demo(props) {
                                 <span className="demo__method-currency-chain-system">{'{bcSys}'}</span>
                             </div>
                         </div>
-
                     </div>
-                    <EmailForm get={emailFormDisabled} set={handleInputChange} />
+                    <EmailForm emailFormDisabled={emailFormDisabled} handleSetEmailFormDisabled={handleSetEmailFormDisabled} setButtonState={setButtonState} />
                 </div>
                 <div className="demo__block-2">
                     <div className="demo__inv-time">
@@ -49,7 +54,7 @@ export default function Demo(props) {
                             <span className='demo__details-commission'></span>
                             <span className='demo__details-full-total'></span>
                             <div className="demo__details-button-wrapper">
-                                <button disabled={emailFormDisabled} className="demo__details-button">Оплатить</button>
+                                <button disabled={buttonState} className="demo__details-button">Оплатить</button>
                             </div>
                             <span className="demo__details-note">Нажимая «Оплатить», вы принимаете пользовательское соглашение.</span>
                         </div>
