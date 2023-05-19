@@ -23,15 +23,15 @@ export default function EmailForm(props) {
                 </label>
             </div>
             {props.emailFormDisabled &&
-                <form className='demo__notification-form'>
+                <form className='main-input-wrapper'>
                     <legend>E-mail</legend>
                     <input
                         onChange={(event) => {
                             const regTemp = /^[\w\.-]+@[\w\.-]+\.\w{2,4}$/;
                             if (regTemp.test(event.target.value)) {
-                                props.setButtonState(false);
+                                props.buttonState_handleButtonDisabled(false);
                             } else {
-                                props.setButtonState(true);
+                                props.buttonState_handleButtonDisabled(true);
                             }
                         }}
                         type='email'

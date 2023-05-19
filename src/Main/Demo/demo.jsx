@@ -2,37 +2,111 @@ import './demo.scss';
 import React, { useState } from 'react';
 import EmailForm from './EmailForm/email-form.jsx'
 export default function Demo(props) {
+
+    const [buttonState, setButtonState] = useState({
+        buttonDisabled: false,
+        step: 1,
+    });
+    function buttonState_handleButtonDisabled(data) {
+        setButtonState(prevState => {
+            return (
+                {
+                    ...prevState,
+                    buttonDisabled: data,
+                }
+            )
+        })
+    };
+    function buttonState_handleNextStep() {
+        setButtonState(prevState => {
+            if (buttonState.step != 3) {
+                return (
+                    {
+                        ...prevState,
+                        step: prevState.step + 1,
+                    }
+                )
+            }
+            return '';
+        })
+    }
+
     const [emailFormDisabled, setEmailFormDisabled] = useState(false);
     const handleSetEmailFormDisabled = () => {
         if (emailFormDisabled == false) {
-            setButtonState(true);
+            buttonState_handleButtonDisabled(true);
         } else {
-            setButtonState(false);
+            buttonState_handleButtonDisabled(false);
         }
         setEmailFormDisabled(!emailFormDisabled);
-
     };
-    const [buttonState, setButtonState] = useState(false);
     return (
         <div className="demo">
             <div className="demo__wrapper container">
                 <div className="demo__block-1">
-                    <div className="demo__method">
-                        <h3 className='demo__method-title'>
-                            Выберите способ оплаты
-                        </h3>
-                        <div className="demo__method-currency">
-                            <div className="demo__method-currency-title">
-                                <img src='https://dummyimage.com/32x32.jpg?text=curIcon' alt='' />
-                                <span className="demo__method-currency-title-title">{'{title}'}</span>
+                    {
+                        buttonState.step == 1 ?
+                            <div className="demo__method">
+                                <h3 className='main-title'>
+                                    Выберите способ оплаты
+                                </h3>
+                                <div className="demo__method-currency">
+                                    <div className="demo__method-currency-title">
+                                        <img src='https://dummyimage.com/32x32.jpg?text=curIcon' alt='' />
+                                        <span className="demo__method-currency-title-title">{'{title}'}</span>
+                                    </div>
+                                    <div className="demo__method-currency-info">
+                                        <span className="demo__method-currency-price">{'{to-pay}'}</span>
+                                        <span className="demo__method-currency-chain-system">{'{bcSys}'}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="demo__method-currency-info">
-                                <span className="demo__method-currency-price">{'{to-pay}'}</span>
-                                <span className="demo__method-currency-chain-system">{'{bcSys}'}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <EmailForm emailFormDisabled={emailFormDisabled} handleSetEmailFormDisabled={handleSetEmailFormDisabled} setButtonState={setButtonState} />
+                            : buttonState.step == 2 ?
+                                <div className="demo__requisites">
+                                    <div className="demo__requisites-wrapper">
+                                        <div className="demo__requisites-header">
+                                            <div className="demo__requisites-qrcode">
+                                                <img src="https://dummyimage.com/101x106.jpg?text=qrcode" alt="" />
+                                            </div>
+                                            <div className="demo__requisites-title">
+                                                <span className="main-title">Реквизиты для оплаты</span>
+                                                <p className="demo__requisites-title-text">
+                                                    Отправьте точную сумму по указанному адресу. После совершения оплаты нажмите на кнопку «Я оплатил» для проверки транзакции.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="demo__requisites-details">
+                                            <div className='main-input-wrapper'>
+                                                <legend>Сумма</legend>
+                                                <input
+                                                    disabled
+                                                    value={'{value}'} />
+                                            </div>
+                                            <div className='main-input-wrapper'>
+                                                <legend>Адрес</legend>
+                                                <input
+                                                    disabled
+                                                    value={'{address}'} />
+                                            </div>
+                                            <div className='main-input-wrapper'>
+                                                <legend>Сеть</legend>
+                                                <input
+                                                    disabled
+                                                    value={'{net}'} />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                : <span>step 3</span>
+                    }
+                    {
+                        buttonState.step == 1 &&
+                        <EmailForm
+                            emailFormDisabled={emailFormDisabled}
+                            handleSetEmailFormDisabled={handleSetEmailFormDisabled}
+                            buttonState_handleButtonDisabled={buttonState_handleButtonDisabled} />
+                    }
                 </div>
                 <div className="demo__block-2">
                     <div className="demo__inv-time">
@@ -54,7 +128,10 @@ export default function Demo(props) {
                             <span className='demo__details-commission'></span>
                             <span className='demo__details-full-total'></span>
                             <div className="demo__details-button-wrapper">
-                                <button disabled={buttonState} className="demo__details-button">Оплатить</button>
+                                <button
+                                    disabled={buttonState.buttonDisabled}
+                                    onClick={buttonState_handleNextStep}
+                                    className="demo__details-button">Оплатить</button>
                             </div>
                             <span className="demo__details-note">Нажимая «Оплатить», вы принимаете пользовательское соглашение.</span>
                         </div>
