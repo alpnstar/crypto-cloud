@@ -1,6 +1,7 @@
 import './demo.scss';
 import React, { useState } from 'react';
 import EmailForm from './EmailForm/email-form.jsx'
+import QRCode from 'react-qr-code';
 export default function Demo(props) {
 
     const [buttonState, setButtonState] = useState({
@@ -40,6 +41,8 @@ export default function Demo(props) {
         }
         setEmailFormDisabled(!emailFormDisabled);
     };
+
+    const [addressInput, setAddressInput] = useState('{address}')
     return (
         <div className="demo">
             <div className="demo__wrapper container">
@@ -65,8 +68,8 @@ export default function Demo(props) {
                                 <div className="demo__requisites">
                                     <div className="demo__requisites-wrapper">
                                         <div className="demo__requisites-header">
-                                            <div className="demo__requisites-qrcode">
-                                                <img src="https://dummyimage.com/101x106.jpg?text=qrcode" alt="" />
+                                            <div className="demo__requisites-qrcode-wrapper">
+                                                <QRCode className='demo__requisites-qrcode' value={addressInput} />
                                             </div>
                                             <div className="demo__requisites-title">
                                                 <span className="main-title">Реквизиты для оплаты</span>
@@ -84,9 +87,9 @@ export default function Demo(props) {
                                             </div>
                                             <div className='main-input-wrapper'>
                                                 <legend>Адрес</legend>
-                                                <input
+                                                <input className='requisites__address'
                                                     disabled
-                                                    value={'{address}'} />
+                                                    value={addressInput} />
                                             </div>
                                             <div className='main-input-wrapper'>
                                                 <legend>Сеть</legend>
