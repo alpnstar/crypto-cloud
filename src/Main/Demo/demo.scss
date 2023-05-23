@@ -310,7 +310,27 @@
                 display: none;
             }
         }
+        &__requisites-header {
+            flex-direction: column;
+            align-items: center;
+            row-gap: 30px;
+        }
+
+        &__requisites-qrcode-wrapper {
+        }
+
+        &__requisites-qrcode {
+            width: 100px;
+        }
+
+        &__requisites-title {
+        }
+
+        &__requisites-title-text {
+        }
     }
+}
+.main-title {
 }
 @include mq(tablet, max) {
 }
