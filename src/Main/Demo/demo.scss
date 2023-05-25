@@ -99,10 +99,12 @@
         padding: 24px;
         background-color: #fff;
         &-wrapper {
+            position: relative;
         }
 
         &-header {
             display: flex;
+            align-items: flex-start;
             column-gap: 26px;
         }
 
@@ -134,6 +136,16 @@
             margin-top: 24px;
             .main-input-wrapper {
                 margin-top: 0px;
+                border-radius: 6px;
+            }
+        }
+        .main-input-copy-icon {
+            position: absolute;
+            display: block;
+            left: 97%;
+            transform: translate(-100%, 0);
+            &::after {
+                content: url("../../../public/images/copy-icon.svg");
             }
         }
     }
@@ -275,17 +287,34 @@
         display: block;
     }
     &__details-total {
-        display: flex;
-        justify-content: space-between;
-
         margin: 10px 0 23px 0;
         padding: 13px 0;
 
-        font-weight: 500;
-        font-size: 18px;
-
         border-top: 1px #8f80db solid;
         border-bottom: 1px #8f80db solid;
+        > div {
+            display: flex;
+            justify-content: space-between;
+        }
+        .total-big {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .total-small {
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
+    &__details-total--step-2 {
+        .demo__details-total {
+            > div {
+                row-gap: 23px;
+            }
+            &-total {
+                font-size: 14px;
+                font-weight: 300;
+            }
+        }
     }
     &__details-note {
         display: flex;
