@@ -63,7 +63,7 @@ export default function Demo(props) {
                             </span>
                         </div>
                         <div className="demo__details">
-                            <div className={buttonState.step != 1 ? 'demo__details-total demo__details-total--step-2' : 'demo__details-total'}>
+                            <div className={`demo__details-total ${buttonState.step != 1 ? 'demo__details-total--step-2' : ''}`}>
                                 <div className="demo__details-total-total total-big">
                                     <span>Итого</span>
                                     <span>{'{Total}'}</span>
