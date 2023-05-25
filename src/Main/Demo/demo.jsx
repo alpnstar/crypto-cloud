@@ -33,6 +33,8 @@ export default function Demo(props) {
         })
     }
 
+    const [emailFormDisabled, setEmailFormDisabled] = useState(false);
+
     return (
         <div className="demo">
             <div className="demo__wrapper container">
@@ -47,6 +49,8 @@ export default function Demo(props) {
                     {
                         buttonState.step == 1 &&
                         <EmailForm
+                            emailFormDisabled={emailFormDisabled}
+                            setEmailFormDisabled={setEmailFormDisabled}
                             buttonState_handleButtonDisabled={buttonState_handleButtonDisabled} />
                     }
                 </div>
@@ -85,6 +89,7 @@ export default function Demo(props) {
 
                             <div className="demo__details-button-wrapper">
                                 <button
+                                    form={emailFormDisabled ? 'my-form' : ''}
                                     disabled={buttonState.buttonDisabled}
                                     onClick={buttonState_handleNextStep}
                                     className="demo__details-button">
@@ -102,6 +107,6 @@ export default function Demo(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

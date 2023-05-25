@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
 
 export default function EmailForm(props) {
-    const [emailFormDisabled, setEmailFormDisabled] = useState(false);
     const handleSetEmailFormDisabled = () => {
-        if (emailFormDisabled == false) {
+        if (props.emailFormDisabled == false) {
             props.buttonState_handleButtonDisabled(true);
         } else {
             props.buttonState_handleButtonDisabled(false);
         }
-        setEmailFormDisabled(!emailFormDisabled);
+        props.setEmailFormDisabled(!props.emailFormDisabled);
     };
 
     return (
         <div className="demo__notification">
             <div className='demo__notification-text'>
-                <div className={`slider ${emailFormDisabled ? "slider--on" : ""}`}>
+                <div className={`slider ${props.emailFormDisabled ? "slider--on" : ""}`}>
                     <label htmlFor="slider-input" className="slider__label">
                         <input
                             type="checkbox"
                             className="slider__input"
                             id="slider-input"
-                            checked={emailFormDisabled}
+                            checked={props.emailFormDisabled}
                             onChange={handleSetEmailFormDisabled}
                         />
                         <div className="slider__track">
@@ -32,11 +31,11 @@ export default function EmailForm(props) {
                     Отправить уведомление <span className="demo__notification-text--hidden">на почту</span>
                 </label>
             </div>
-            {emailFormDisabled &&
-                <form className='main-input-wrapper'>
+            {props.emailFormDisabled &&
+                <form id='email-form' className='main-input-wrapper'>
                     <legend>E-mail</legend>
                     <input
-                        onChange={(event) => {
+                        onChange={event => {
                             const regTemp = /^[\w\.-]+@[\w\.-]+\.\w{2,4}$/;
                             if (regTemp.test(event.target.value)) {
                                 props.buttonState_handleButtonDisabled(false);
