@@ -290,8 +290,13 @@
         margin: 10px 0 23px 0;
         padding: 13px 0;
 
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+
         border-top: 1px #8f80db solid;
         border-bottom: 1px #8f80db solid;
+
         > div {
             display: flex;
             justify-content: space-between;
@@ -308,7 +313,6 @@
     &__details-total--step-2 {
         .demo__details-total {
             > div {
-                row-gap: 23px;
             }
             &-total {
                 font-size: 14px;
