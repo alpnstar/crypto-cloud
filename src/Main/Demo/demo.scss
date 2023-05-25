@@ -26,7 +26,7 @@
         * {
             font-weight: 300;
         }
-        margin-top: 20px;
+        margin-top: 18px;
         border-radius: 6px;
         display: flex;
         border: 1px solid #f0f0f0;
@@ -434,6 +434,10 @@
             &-note {
                 display: none;
             }
+        }
+        &__transactionDetails,
+        &__requisites {
+            font-size: 13px;
         }
     }
 }
