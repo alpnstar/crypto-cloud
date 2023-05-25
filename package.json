@@ -9,7 +9,8 @@
     "build-dev": "webpack",
     "build-prod": "webpack --node-env=production",
     "clear": "rm -dr bundle",
-    "deploy": "gh-pages -d bundle"
+    "deploy": "gh-pages -d bundle",
+    "bind" : "npm run build-prod && git add . && git commit -am 'commit' && git push && npm run deploy"
   },
   "keywords": [],
   "author": "Satiyadzhiev",

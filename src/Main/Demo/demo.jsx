@@ -68,13 +68,13 @@ export default function Demo(props) {
                                     <span>Итого</span>
                                     <span>{'{Total}'}</span>
                                 </div>
-                                {buttonState.step == 2 &&
+                                {buttonState.step != 1 &&
                                     <div className='demo__details-commission total-small'>
                                         <span>Технический сбор</span>
                                         <span>{'{commision}'}</span>
                                     </div>
                                 }
-                                {buttonState.step == 2 &&
+                                {buttonState.step != 1 &&
                                     <div className='demo__details-full-total total-big'>
                                         <span>Итого:</span>
                                         <span>{'{fullTotal}'}</span>
