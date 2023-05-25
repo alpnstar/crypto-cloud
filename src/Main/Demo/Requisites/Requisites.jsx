@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import QRCode from 'react-qr-code';
+import TransactionDetailsInputs from '../TransactionDetails/TransactionDetailsInputs.jsx';
 
 
 export default function Requisites(props) {
-    const [addressInput, setAddressInput] = useState('{address}');
 
     useEffect(() => {
         document.querySelectorAll('.main-input-wrapper').forEach((item, index, array) => {
@@ -19,7 +19,7 @@ export default function Requisites(props) {
             <div className="demo__requisites-wrapper">
                 <div className="demo__requisites-header">
                     <div className="demo__requisites-qrcode-wrapper">
-                        <QRCode className='demo__requisites-qrcode' value={addressInput} />
+                        <QRCode className='demo__requisites-qrcode' value={props.addressInput} />
                     </div>
                     <div className="demo__requisites-title">
                         <span className="main-title">Реквизиты для оплаты</span>
@@ -29,26 +29,9 @@ export default function Requisites(props) {
                     </div>
                 </div>
                 <div className="demo__requisites-details">
-                    <div className='main-input-wrapper'>
-                        <legend>Сумма</legend>
-                        <input
-                            disabled
-                            value={'{value}'} />
-                        <span className='main-input-copy-icon'></span>
-                    </div>
-                    <div className='main-input-wrapper'>
-                        <legend>Адрес</legend>
-                        <input className='requisites__address'
-                            disabled
-                            value={addressInput} />
-                        <span className='main-input-copy-icon'></span>
-                    </div>
-                    <div className='main-input-wrapper'>
-                        <legend>Сеть</legend>
-                        <input
-                            disabled
-                            value={'{net}'} />
-                    </div>
+                    <TransactionDetailsInputs
+                        buttonState={props.buttonState}
+                        addressInput={props.addressInput} />
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import EmailForm from './EmailForm/email-form.jsx'
 import Requisites from './Requisites/Requisites.jsx';
 import Method from './Method/Method.jsx';
+import TransactionDetails from './TransactionDetails/TransactionDetails.jsx';
 
 export default function Demo(props) {
     const [buttonState, setButtonState] = useState({
@@ -21,7 +22,7 @@ export default function Demo(props) {
     };
     function buttonState_handleNextStep() {
         setButtonState(prevState => {
-            if (buttonState.step != 3) {
+            if (buttonState.step != 4) {
                 return (
                     {
                         ...prevState,
@@ -29,11 +30,12 @@ export default function Demo(props) {
                     }
                 )
             }
-            return '';
+            return prevState;
         })
     }
 
     const [emailFormDisabled, setEmailFormDisabled] = useState(false);
+    const [addressInput, setAddressInput] = useState('{address}');
 
     return (
         <div className="demo">
@@ -43,8 +45,15 @@ export default function Demo(props) {
                         buttonState.step == 1 ?
                             <Method />
                             : buttonState.step == 2 ?
-                                <Requisites />
-                                : <span>step 3</span>
+                                <Requisites buttonState={buttonState}
+                                    addressInput={addressInput}
+                                />
+                                : buttonState.step == 3 || buttonState.step == 4 ?
+                                    <TransactionDetails
+                                        buttonState={buttonState}
+                                        addressInput={addressInput}
+                                    />
+                                    : ''
                     }
                     {
                         buttonState.step == 1 &&
@@ -67,26 +76,28 @@ export default function Demo(props) {
                             </span>
                         </div>
                         <div className="demo__details">
-                            <div className={`demo__details-total ${buttonState.step != 1 ? 'demo__details-total--step-2' : ''}`}>
-                                <div className="demo__details-total-total total-big">
-                                    <span>Итого</span>
-                                    <span>{'{Total}'}</span>
+                            {buttonState.step != 4 &&
+                                <div className={`demo__details-total ${buttonState.step != 1 ? 'demo__details-total--step-2' : ''}`}>
+                                    <div className="demo__details-total-total total-big">
+                                        <span>Итого</span>
+                                        <span>{'{Total}'}</span>
+                                    </div>
+                                    {
+                                        buttonState.step != 1 &&
+                                        <>
+                                            <div className='demo__details-commission total-small'>
+                                                <span>Технический сбор</span>
+                                                <span>{'{commision}'}</span>
+                                            </div>
+                                            <div className='demo__details-full-total total-big'>
+                                                <span>Итого:</span>
+                                                <span>{'{fullTotal}'}</span>
+                                            </div>
+
+                                        </>
+                                    }
                                 </div>
-                                {buttonState.step != 1 &&
-                                    <div className='demo__details-commission total-small'>
-                                        <span>Технический сбор</span>
-                                        <span>{'{commision}'}</span>
-                                    </div>
-                                }
-                                {buttonState.step != 1 &&
-                                    <div className='demo__details-full-total total-big'>
-                                        <span>Итого:</span>
-                                        <span>{'{fullTotal}'}</span>
-                                    </div>
-                                }
-
-                            </div>
-
+                            }
                             <div className="demo__details-button-wrapper">
                                 <button
                                     form={emailFormDisabled ? 'my-form' : ''}
@@ -98,7 +109,9 @@ export default function Demo(props) {
                                             'Оплатить' :
                                             buttonState.step == 2 ?
                                                 'Я оплатил' :
-                                                'Далее'
+                                                buttonState.step == 4 ?
+                                                    'Вернуться на сайт'
+                                                    : 'Далее'
                                     }
                                 </button>
                             </div>
