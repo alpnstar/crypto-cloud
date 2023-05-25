@@ -30,7 +30,12 @@ export default function Demo(props) {
                     }
                 )
             }
-            return prevState;
+            return (
+                {
+                    ...prevState,
+                    step: 1,
+                }
+            );
         })
     }
 
