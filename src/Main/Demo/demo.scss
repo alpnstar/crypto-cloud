@@ -59,14 +59,19 @@
 
         padding: 25px;
 
-        border: 1px solid #4a40c6;
         border-radius: 12px;
-
-        img {
-            width: 25px;
-            height: 25px !important;
-            animation: spinner 2.5s linear infinite;
+        &--loading {
+            border: 1px solid #4a40c6;
+            img {
+                width: 25px;
+                height: 25px;
+                animation: spinner 2.5s linear infinite;
+            }
+            &--finded {
+                border: 1px solid #58bd7d;
+            }
         }
+
         @keyframes spinner {
             from {
                 transform: rotate(0deg);
