@@ -67,9 +67,9 @@
                 height: 25px;
                 animation: spinner 2.5s linear infinite;
             }
-            &--finded {
-                border: 1px solid #58bd7d;
-            }
+        }
+        &--finded {
+            border: 1px solid #58bd7d;
         }
 
         @keyframes spinner {

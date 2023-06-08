@@ -56,6 +56,7 @@ export default function Demo(props) {
                                 : buttonState.step == 3 || buttonState.step == 4 ?
                                     <TransactionDetails
                                         buttonState={buttonState}
+                                        buttonState_handleNextStep={buttonState_handleNextStep}
                                         addressInput={addressInput}
                                     />
                                     : ''
@@ -114,9 +115,9 @@ export default function Demo(props) {
                                             'Оплатить' :
                                             buttonState.step == 2 ?
                                                 'Я оплатил' :
-                                                buttonState.step == 4 ?
-                                                    'Вернуться на сайт'
-                                                    : 'Далее'
+                                                buttonState.step == 3 ?
+                                                    'Далее'
+                                                    : 'Вернуться на сайт'
                                     }
                                 </button>
                             </div>
