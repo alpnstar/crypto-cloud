@@ -4,6 +4,7 @@ import EmailForm from './EmailForm/email-form.jsx'
 import Requisites from './Requisites/Requisites.jsx';
 import Method from './Method/Method.jsx';
 import TransactionDetails from './TransactionDetails/TransactionDetails.jsx';
+import TransactionStatus from './TransactionStatus/TransactionStatus.jsx';
 
 export default function Demo(props) {
     const [buttonState, setButtonState] = useState({
@@ -46,6 +47,8 @@ export default function Demo(props) {
         <div className="demo">
             <div className="demo__wrapper container">
                 <div className="demo__block-1">
+                    <TransactionStatus />
+
                     {
                         buttonState.step == 1 ?
                             <Method />

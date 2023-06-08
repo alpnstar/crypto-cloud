@@ -49,6 +49,26 @@
             }
         }
     }
+    &__transactionStatus {
+        background-color: #ffffff;
+        box-shadow: 0px 15px 30px -10px rgba(60, 60, 60, 0.05);
+
+        padding: 25px;
+        padding-left: 50px;
+
+        border: 1px solid #4a40c6;
+        border-radius: 12px;
+
+        h2 {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        &-note {
+            font-size: 11px;
+            font-weight: 300;
+            color: #777E91;
+        }
+    }
     &__method {
         padding: 24px;
         background-color: #ffffff;
