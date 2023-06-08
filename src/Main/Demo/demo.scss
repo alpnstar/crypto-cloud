@@ -57,6 +57,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            color: #353945;
+
             padding: 16px;
 
             border: 1px solid #4a40c6;
@@ -152,6 +155,9 @@
     &__transactionDetails {
         background-color: #fff;
         padding: 24px;
+        .demo__method-currency {
+            border: 1px solid #f0f0f0;
+        }
     }
     &__notification {
         background-color: #ffffff;
