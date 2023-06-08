@@ -183,7 +183,7 @@
             left: 97%;
             transform: translate(-100%, 0);
             &::after {
-                content: url("../../../public/images/copy-icon.svg");
+                content: url("../../../public/imgs/copy-icon.svg");
             }
         }
     }
@@ -317,7 +317,7 @@
             text-overflow: ellipsis;
             padding-left: 25px;
             &::before {
-                content: url("../../../public/images/Без\ названия\ \(3\).svg");
+                content: url("../../../public/imgs/Без\ названия\ \(3\).svg");
                 position: absolute;
                 top: 0px;
                 left: 0px;
@@ -371,7 +371,7 @@
         font-size: 11px;
         font-weight: 500;
         &::before {
-            content: url("../../../public/images/demo__inv-note-image.svg");
+            content: url("../../../public/imgs/demo__inv-note-image.svg");
             margin-right: 5px;
         }
     }
