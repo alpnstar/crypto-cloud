@@ -5,25 +5,22 @@ import TransactionStatus from './TransactionStatus/TransactionStatus.jsx';
 
 export default function TransactionDetails(props) {
     const [transactionStatusState, setTransactionStatusState] = useState(1);
-    useEffect(() => {
-        (function () {
-            setTimeout(() => {
-                setTransactionStatusState(transactionStatusState + 1);
-            }, 1500);
-            setTimeout(() => {
-                setTransactionStatusState(transactionStatusState + 1);
-            }, 1500);
+    function handle() {
+        if (transactionStatusState < 3) {
+            setTransactionStatusState(transactionStatusState + 1)
+        }
+    }
 
-        })()
-    })
     return (
         <>
             <TransactionStatus
                 transactionStatusState={transactionStatusState}
+                handle={handle}
                 buttonState_handleNextStep={props.buttonState_handleNextStep}
-                setTransactionStatusState={setTransactionStatusState} />
+            />
             <div className="demo__transactionDetails">
                 <h3 className='main-title'>Детали транзакции</h3>
+                <button onClick={handle}>BUTTON CLICK</button>
                 <MethodCurrency />
                 <TransactionDetailsInputs
                     buttonState={props.buttonState}
