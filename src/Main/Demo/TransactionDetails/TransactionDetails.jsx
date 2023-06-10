@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TransactionDetailsInputs from './TransactionDetailsInputs.jsx';
 import MethodCurrency from '../Method/MethodCurrency.jsx';
 import TransactionStatus from './TransactionStatus/TransactionStatus.jsx';
 
 export default function TransactionDetails(props) {
     const [transactionStatusState, setTransactionStatusState] = useState(1);
-    function handle() {
+    function setTransactionStatusStateHandle() {
         if (transactionStatusState < 3) {
             setTransactionStatusState(transactionStatusState + 1)
         }
@@ -15,15 +15,14 @@ export default function TransactionDetails(props) {
         <>
             <TransactionStatus
                 transactionStatusState={transactionStatusState}
-                handle={handle}
-                buttonState_handleNextStep={props.buttonState_handleNextStep}
+                setTransactionStatusStateHandle={setTransactionStatusStateHandle}
+                setMainStateHandle={props.setMainStateHandle}
             />
             <div className="demo__transactionDetails">
                 <h3 className='main-title'>Детали транзакции</h3>
-                <button onClick={handle}>BUTTON CLICK</button>
                 <MethodCurrency />
                 <TransactionDetailsInputs
-                    buttonState={props.buttonState}
+                    mainState={props.mainState}
                     addressInput={props.addressInput}
                 />
             </div>

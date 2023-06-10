@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import QRCode from 'react-qr-code';
 import TransactionDetailsInputs from '../TransactionDetails/TransactionDetailsInputs.jsx';
 
 
 export default function Requisites(props) {
-
     useEffect(() => {
-        document.querySelectorAll('.main-input-wrapper').forEach((item, index, array) => {
-            item.addEventListener('click', (event) => {
-                const parent = document.querySelectorAll('.main-input-wrapper')[index];
-                const value = parent.querySelector('input').value;
-                navigator.clipboard.writeText(value);
-            })
-        });
+        document.querySelectorAll('.main-input-wrapper')
+            .forEach((item, index, array) => {
+                item.addEventListener('click', (event) => {
+                    const parent = document.querySelectorAll('.main-input-wrapper')[index];
+                    const value = parent.querySelector('input').value;
+                    navigator.clipboard.writeText(value);
+                })
+            });
     }, [])
     return (
         <div className="demo__requisites">
@@ -30,8 +30,9 @@ export default function Requisites(props) {
                 </div>
                 <div className="demo__requisites-details">
                     <TransactionDetailsInputs
-                        buttonState={props.buttonState}
-                        addressInput={props.addressInput} />
+                        mainState={props.mainState}
+                        addressInput={props.addressInput}
+                    />
                 </div>
             </div>
         </div>

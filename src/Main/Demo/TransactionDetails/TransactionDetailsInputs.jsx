@@ -3,8 +3,8 @@ import React from 'react';
 export default function TransactionDetailsInputs(props) {
     return (
         <>
-        
-            {props.buttonState.step == 4 &&
+            {
+                props.mainState == 4 &&
                 <div className='main-input-wrapper'>
                     <legend>Дата</legend>
                     <input

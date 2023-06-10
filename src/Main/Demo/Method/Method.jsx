@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MethodCurrency from './MethodCurrency.jsx';
 
 export default function Method(props) {

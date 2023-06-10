@@ -8,13 +8,13 @@
     }
 
     &__block-1 {
-        flex-grow: 1.8;
-        flex-basis: 0;
-        border-radius: 12px;
-
         display: flex;
         flex-direction: column;
+        flex-grow: 1.8;
+        flex-basis: 0;
         row-gap: 16px;
+
+        border-radius: 12px;
     }
     .main-title {
         font-size: em(20);
@@ -27,16 +27,18 @@
             font-weight: 300;
         }
         margin-top: 18px;
-        border-radius: 6px;
-        display: flex;
-        border: 1px solid #f0f0f0;
-        box-shadow: 0px 5px 10px -5px rgba(15, 15, 15, 0.05);
         padding: 15px;
+        display: flex;
+
+        border: 1px solid #f0f0f0;
+        border-radius: 6px;
+
+        box-shadow: 0px 5px 10px -5px rgba(15, 15, 15, 0.05);
         legend {
+            display: block;
             min-width: em(65);
             padding-right: 15px;
             border-right: 1px solid #f0f0f0;
-            display: block;
             white-space: nowrap;
         }
         input {
@@ -93,8 +95,8 @@
     }
     &__method {
         padding: 24px;
-        background-color: #ffffff;
         border-radius: 12px;
+        background-color: #ffffff;
         &-currency {
             display: flex;
             justify-content: space-between;
@@ -130,11 +132,14 @@
 
         &-currency-chain-system {
             background: #fbfbfb;
+
             border: 0.5px solid #f0f0f0;
             border-radius: 50px;
+
             font-weight: 500;
-            text-transform: uppercase;
             font-size: 10px;
+            text-transform: uppercase;
+
             color: #4a40c6;
             padding: 5px 8px;
         }
@@ -142,6 +147,7 @@
     &__requisites {
         border: 1px solid #4a40c6;
         border-radius: 12px;
+
         padding: 24px;
         background-color: #fff;
         &-wrapper {
@@ -158,8 +164,10 @@
             width: 80px;
             &-wrapper {
                 padding: 10px 10px 7px 10px;
+
                 border: 1px solid #f0f0f0;
                 border-radius: 8px;
+
                 box-shadow: 0px 5px 10px -5px rgba(15, 15, 15, 0.05);
             }
         }
@@ -182,12 +190,14 @@
             display: flex;
             flex-direction: column;
             row-gap: 19px;
+
             margin-top: 24px;
         }
         .main-input-copy-icon {
-            position: absolute;
             display: block;
+            position: absolute;
             left: 97%;
+
             transform: translate(-100%, 0);
             &::after {
                 content: url("../../../public/imgs/copy-icon.svg");
@@ -236,13 +246,15 @@
     }
 
     .slider__track {
-        position: absolute;
         width: 34px;
         height: 16px;
+
+        position: absolute;
         top: 2px;
         left: 0;
         right: 0;
         bottom: 0;
+
         background: #bfbcdd;
         border-radius: 34px;
         transition: transform background 0.4s 0.2s ease;
@@ -254,10 +266,12 @@
         top: -2px;
         width: 20px;
         height: 20px;
+
         border-radius: 50%;
+        border: 2px solid #bfbcdd;
+
         background-color: #fff;
         transition: transform 0.2s;
-        border: 2px solid #bfbcdd;
     }
 
     .slider--on .slider__track {
@@ -320,11 +334,14 @@
             display: block;
             position: relative;
             overflow: hidden;
+
             white-space: nowrap;
             text-overflow: ellipsis;
+
             padding-left: 25px;
             &::before {
                 content: url("../../../public/imgs/Без\ названия\ \(3\).svg");
+
                 position: absolute;
                 top: 0px;
                 left: 0px;
@@ -375,6 +392,7 @@
     &__details-note {
         display: flex;
         margin-top: 12px;
+
         font-size: 11px;
         font-weight: 500;
         &::before {
@@ -434,8 +452,8 @@
                 display: none;
                 &--alt {
                     display: inline-block;
-                    font-size: 14px;
                     margin-bottom: 0;
+                    font-size: 14px;
                 }
             }
             &-text {
@@ -458,9 +476,9 @@
         }
         &__details {
             &-total {
-                margin-top: 15px;
-                margin-bottom: 0;
+                margin-top: 15px 0 0 0;
                 padding-bottom: 0;
+
                 border-bottom: 0;
             }
             &-button {
@@ -474,6 +492,7 @@
                     position: fixed;
                     left: 0;
                     top: 100%;
+
                     transform: translate(0, -100%);
                 }
             }

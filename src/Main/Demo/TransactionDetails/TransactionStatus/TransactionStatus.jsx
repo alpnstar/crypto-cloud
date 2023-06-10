@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import loadingIcon from '../../../../../public/imgs/loader_accent.ede5cf0.svg';
 import Success from './Success/Success.jsx';
 
@@ -7,11 +7,11 @@ export default function TransactionStatus(props) {
         <>
             {
                 props.transactionStatusState === 1 ?
-                    <Search handle={props.handle} />
+                    <Search setTransactionStatusStateHandle={props.setTransactionStatusStateHandle} />
                     : props.transactionStatusState === 2 ?
-                        <Finded handle={props.handle} />
+                        <Finded setTransactionStatusStateHandle={props.setTransactionStatusStateHandle} />
                         : props.transactionStatusState === 3 ?
-                            <Success buttonState_handleNextStep={props.buttonState_handleNextStep} />
+                            <Success setMainStateHandle={props.setMainStateHandle} />
                             : ''
             }
         </>
@@ -22,7 +22,8 @@ function Search(props) {
 
     useEffect(() => {
         setTimeout(() => {
-            ref.current && props.handle();
+            ref.current &&
+                props.setTransactionStatusStateHandle();
         }, 1500);
     }, [])
 
@@ -44,12 +45,13 @@ function Finded(props) {
 
     useEffect(() => {
         setTimeout(() => {
-            ref.current && props.handle();
+            ref.current && props.setTransactionStatusStateHandle();
         }, 3100);
     }, [])
 
     return (
-        <div ref={ref} className="demo__transactionStatus demo__transactionStatus--loading demo__transactionStatus--finded">
+        <div ref={ref}
+            className="demo__transactionStatus demo__transactionStatus--loading demo__transactionStatus--finded">
             <img src={loadingIcon} alt="" />
             <div className="demo__transactionStatus-content">
                 <h2>Транзакция найдена! Ожидаем подтверждения.</h2>

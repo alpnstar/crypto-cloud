@@ -6,67 +6,50 @@ import Method from './Method/Method.jsx';
 import TransactionDetails from './TransactionDetails/TransactionDetails.jsx';
 
 export default function Demo(props) {
-    const [buttonState, setButtonState] = useState({
-        buttonDisabled: false,
-        step: 1,
-    });
-    function buttonState_handleButtonDisabled(data) {
-        setButtonState(prevState => {
-            return (
-                {
-                    ...prevState,
-                    buttonDisabled: data,
-                }
-            )
-        })
+    const
+        [mainState, setMainState] = useState(1),
+        [buttonState, setButtonState] = useState(false),
+        [emailFormDisabled, setEmailFormDisabled] = useState(false),
+        [addressInput, setAddressInput] = useState('{address}');
+
+    function setButtonStateHandle() {
+        setButtonState(!buttonState);
     };
-    function buttonState_handleNextStep() {
-        setButtonState(prevState => {
-            if (buttonState.step != 4) {
-                return (
-                    {
-                        ...prevState,
-                        step: prevState.step + 1,
-                    }
-                )
-            }
-            return (
-                {
-                    ...prevState,
-                    step: 1,
-                }
-            );
+
+    function setMainStateHandle() {
+        setButtonState(() => {
+            if (mainState != 4) return setMainState(mainState + 1);
+            setMainState(1);
         })
     }
-
-    const [emailFormDisabled, setEmailFormDisabled] = useState(false);
-    const [addressInput, setAddressInput] = useState('{address}');
 
     return (
         <div className="demo">
             <div className="demo__wrapper container">
                 <div className="demo__block-1">
                     {
-                        buttonState.step == 1 ?
+                        mainState == 1 ?
                             <Method />
-                            : buttonState.step == 2 ?
-                                <Requisites buttonState={buttonState}
+                            : mainState == 2 ?
+                                <Requisites
+                                    mainState={mainState}
                                     addressInput={addressInput}
                                 />
-                                : buttonState.step == 3 || buttonState.step == 4 ?
+                                : mainState == 3 || mainState == 4 ?
                                     <TransactionDetails
-                                        buttonState={buttonState}
-                                        buttonState_handleNextStep={buttonState_handleNextStep}
+                                        mainState={mainState}
+                                        setMainStateHandle={setMainStateHandle}
                                         addressInput={addressInput}
                                     />
                                     : ''
                     }
                     {
-                        buttonState.step == 1 &&
+                        mainState == 1 &&
                         <EmailForm
                             emailFormDisabled={emailFormDisabled}
                             setEmailFormDisabled={setEmailFormDisabled}
-                            buttonState_handleButtonDisabled={buttonState_handleButtonDisabled} />
+                            setButtonStateHandle={setButtonStateHandle}
+                        />
                     }
                 </div>
                 <div className="demo__block-2">
@@ -82,14 +65,14 @@ export default function Demo(props) {
                             </span>
                         </div>
                         <div className="demo__details">
-                            {buttonState.step != 4 &&
-                                <div className={`demo__details-total ${buttonState.step != 1 ? 'demo__details-total--step-2' : ''}`}>
+                            {mainState != 4 &&
+                                <div className={`demo__details-total ${mainState != 1 ? 'demo__details-total--step-2' : ''}`}>
                                     <div className="demo__details-total-total total-big">
                                         <span>Итого</span>
                                         <span>{'{Total}'}</span>
                                     </div>
                                     {
-                                        buttonState.step != 1 &&
+                                        mainState != 1 &&
                                         <>
                                             <div className='demo__details-commission total-small'>
                                                 <span>Технический сбор</span>
@@ -107,21 +90,23 @@ export default function Demo(props) {
                             <div className="demo__details-button-wrapper">
                                 <button
                                     form={emailFormDisabled ? 'my-form' : ''}
-                                    disabled={buttonState.buttonDisabled}
-                                    onClick={buttonState_handleNextStep}
+                                    disabled={buttonState}
+                                    onClick={setMainStateHandle}
                                     className="demo__details-button">
                                     {
-                                        buttonState.step == 1 ?
+                                        mainState == 1 ?
                                             'Оплатить' :
-                                            buttonState.step == 2 ?
+                                            mainState == 2 ?
                                                 'Я оплатил' :
-                                                buttonState.step == 3 ?
+                                                mainState == 3 ?
                                                     'Далее'
                                                     : 'Вернуться на сайт'
                                     }
                                 </button>
                             </div>
-                            <span className="demo__details-note">Нажимая «Оплатить», вы принимаете пользовательское соглашение.</span>
+                            <span className="demo__details-note">
+                                Нажимая «Оплатить», вы принимаете пользовательское соглашение.
+                            </span>
                         </div>
                     </div>
                 </div>
