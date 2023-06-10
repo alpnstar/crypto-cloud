@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import loadingIcon from '../../../../../public/imgs/loader_accent.ede5cf0.svg';
-import Success from './Success/Success.jsx';
+import transactionSuccessIcon from '../../../../../public/imgs/transactionSuccess.svg';
 
 export default function TransactionStatus(props) {
     return (
@@ -55,6 +55,20 @@ function Finded(props) {
             <img src={loadingIcon} alt="" />
             <div className="demo__transactionStatus-content">
                 <h2>Транзакция найдена! Ожидаем подтверждения.</h2>
+            </div>
+        </div>
+    )
+}
+
+function Success(props) {
+    useEffect(() => {
+        props.setMainStateHandle();
+    }, [])
+    return (
+        <div className="demo__transactionStatus demo__transactionStatus--finded">
+            <img src={transactionSuccessIcon} alt="" />
+            <div className="demo__transactionStatus-content">
+                <h2>Счёт успешно оплачен.</h2>
             </div>
         </div>
     )
