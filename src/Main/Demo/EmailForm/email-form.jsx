@@ -3,9 +3,9 @@ import React from 'react';
 export default function EmailForm(props) {
     const handleSetEmailFormDisabled = () => {
         if (props.emailFormDisabled == false) {
-            props.buttonState_handleButtonDisabled(true);
+            props.setButtonStateHandle(true);
         } else {
-            props.buttonState_handleButtonDisabled(false);
+            props.setButtonStateHandle(false);
         }
         props.setEmailFormDisabled(!props.emailFormDisabled);
     };
@@ -38,9 +38,9 @@ export default function EmailForm(props) {
                         onChange={event => {
                             const regTemp = /^[\w\.-]+@[\w\.-]+\.\w{2,4}$/;
                             if (regTemp.test(event.target.value)) {
-                                props.buttonState_handleButtonDisabled(false);
+                                props.setButtonStateHandle(false);
                             } else {
-                                props.buttonState_handleButtonDisabled(true);
+                                props.setButtonStateHandle(true);
                             }
                         }}
                         type='email'
